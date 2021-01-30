@@ -6,11 +6,13 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Drivers/STM32F7xx_HAL_Driver",
+                "${workspaceFolder}/Middlewares/ST/touchgfx/framework/include/touchgfx/hal",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F7xx/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/Drivers/STM32F7xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Drivers/STM32769I_DISCO/Include",
                 "${workspaceFolder}/TouchGFX/App",
+                "${workspaceFolder}/TouchGFX/target/generated",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1"
             ],

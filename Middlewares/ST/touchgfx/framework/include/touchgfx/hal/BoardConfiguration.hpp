@@ -21,8 +21,26 @@
 #ifndef BOARDCONFIGURATION_HPP
 #define BOARDCONFIGURATION_HPP
 
-namespace touchgfx
-{
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "stm32f7xx_hal.h"
+
+
+#define VSYNC_FREQ2_Pin GPIO_PIN_13
+#define VSYNC_FREQ2_GPIO_Port GPIOJ
+#define DSI_RESET_Pin GPIO_PIN_15
+#define DSI_RESET_GPIO_Port GPIOJ
+#define RENDER_TIME_Pin GPIO_PIN_7
+#define RENDER_TIME_GPIO_Port GPIOC
+#define VSYNC_FREQ_Pin GPIO_PIN_6
+#define VSYNC_FREQ_GPIO_Port GPIOC
+#define RENDER_TIME2_Pin GPIO_PIN_5
+#define RENDER_TIME2_GPIO_Port GPIOJ
+#define FRAMERATE_Pin GPIO_PIN_1
+#define FRAMERATE_GPIO_Port GPIOJ
+
 /**
  * Function to perform generic hardware initialization of the board. This function prototype is
  * only provided as a convention.
@@ -35,6 +53,13 @@ void hw_init();
  */
 void touchgfx_init();
 
-} // namespace touchgfx
+
+void MX_I2C4_Init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+
 
 #endif // BOARDCONFIGURATION_HPP

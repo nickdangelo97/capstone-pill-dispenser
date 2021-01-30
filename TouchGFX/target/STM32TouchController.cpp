@@ -20,6 +20,7 @@
 #include <STM32TouchController.hpp>
 #include "../ft6x06/ft6x06.h"
 #include <stm32f7xx_hal.h>
+#include <touchgfx/hal/BoardConfiguration.hpp>
 
 extern "C"
 {
@@ -70,7 +71,7 @@ extern "C"
     } TS_StatusTypeDef;
 
     extern I2C_HandleTypeDef hi2c4;
-    extern void MX_I2C4_Init(void);
+    //extern void MX_I2C4_Init(void);
 
     static uint8_t  ts_orientation;
     static uint8_t  I2C_Address = 0;
