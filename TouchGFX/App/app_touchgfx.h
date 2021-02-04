@@ -14,8 +14,16 @@
   *
   ******************************************************************************
   */
+#ifdef __cplusplus
+ extern "C" {
+#endif
 
 void MX_TouchGFX_Init(void);
 void MX_TouchGFX_Process(void);
+void TouchGFX_Task(void *argument);
+
+#ifdef __cplusplus
+}
+#endif
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
