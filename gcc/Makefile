@@ -58,7 +58,7 @@ flash intflash: all
 # for comp_name/include.
 components := TouchGFX/gui target TouchGFX/generated/gui_generated
 touchgfx_generator_components := TouchGFX/target TouchGFX/App
-cubemx_components := Core Drivers/STM32F7xx_HAL_Driver
+cubemx_components := Core Drivers/STM32F7xx_HAL_Driver Drivers/STM32769I_DISCO
 
 # Location of folder containing bmp/png files.
 asset_images_input  := TouchGFX/assets/images
@@ -181,6 +181,7 @@ all_components := $(components) \
 include_paths := $(library_includes) \
     $(foreach comp, $(all_components), $(comp)/include) \
     $(foreach comp, $(cubemx_components), $(comp)/Inc) \
+	$(foreach comp, $(cubemx_components), $(comp)/Include) \
     $(foreach comp, $(touchgfx_generator_components), $(comp)/generated) \
     $(framework_includes) \
     $(touchgfx_middlewares_path) \
