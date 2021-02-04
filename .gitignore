@@ -1,0 +1,14 @@
+.vs/
+STM32CubeIDE/.cproject
+STM32CubeIDE/.project
+STM32CubeIDE/Debug
+
+TouchGFX/build
+TouchGFX/generated/fonts
+TouchGFX/generated/texts
+TouchGFX/generated/images
+TouchGFX/config/msvs/Application.props
+TouchGFX/config/gcc/app.mk
+TouchGFX/simulator/msvs/Application.vcxproj
+TouchGFX/simulator/msvs/Application.vcxproj.filters
+TouchGFX/simulator/msvs/Application.vcxproj.user
