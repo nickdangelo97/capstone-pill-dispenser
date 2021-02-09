@@ -1,0 +1,31 @@
+{
+    "files.exclude": {
+        ".extSettings": true,
+        "*.ioc": true,
+        // "gcc/": true,
+        "STM32CubeIDE": true,
+        "TouchGFX/*.config": true,
+        "TouchGFX/*.touchgfx.*": true,
+        "TouchGFX/build": true,
+        "TouchGFX/config": true,
+        "TouchGFX/generated/fonts": true,
+        "TouchGFX/generated/images": true,
+        "TouchGFX/generated/texts": true,
+        "TouchGFX/simulator": true,
+        "TouchGFX/target": true
+    },
+    "files.associations": {
+        "boardconfiguration.hpp": "c",
+        "cmsis_os.h": "c",
+        "main.h": "c",
+        "stm32f7xx_hal.h": "c",
+        "stm32f7xx_hal_conf.h": "c",
+        "stm32f7xx_hal_rcc.h": "c",
+        "stm32f7xx_hal_def.h": "c",
+        "stm32f7xx.h": "c",
+        "freertos.h": "c",
+        "new": "cpp"
+    },
+    "cortex-debug.armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2020-q4-major\\bin",
+    "files.insertFinalNewline": true
+}
