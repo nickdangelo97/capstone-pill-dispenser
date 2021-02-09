@@ -58,7 +58,7 @@ flash intflash: all
 # for comp_name/include.
 components := TouchGFX/gui target TouchGFX/generated/gui_generated
 touchgfx_generator_components := TouchGFX/target TouchGFX/App
-cubemx_components := Core Drivers/STM32F7xx_HAL_Driver Drivers/STM32769I_DISCO
+cubemx_components := Core fsm fsm/states Drivers/STM32F7xx_HAL_Driver Drivers/STM32769I_DISCO
 
 # Location of folder containing bmp/png files.
 asset_images_input  := TouchGFX/assets/images
@@ -186,11 +186,11 @@ include_paths := $(library_includes) \
     $(framework_includes) \
     $(touchgfx_middlewares_path) \
     $(cubemx_middlewares_path) \
-    $(touchgfx_generator_components)
+    $(touchgfx_generator_components) \
 
 source_paths = $(foreach comp, $(all_components), $(comp)/src) \
     $(foreach comp, $(cubemx_components), $(comp)/Src) \
-    $(touchgfx_generator_components)
+    $(touchgfx_generator_components) \
 
 # Finds files that matches the specified pattern. The directory list
 # is searched recursively. It is safe to invoke this function with an

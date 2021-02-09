@@ -5,6 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/fsm/include",
+                "${workspaceFolder}/fsm/states/include",
                 "${workspaceFolder}/Drivers/STM32F7xx_HAL_Driver",
                 "${workspaceFolder}/Middlewares/ST/touchgfx/framework/include/touchgfx/hal",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F7xx/Include",
