@@ -1,18 +1,11 @@
 #include "main.h"
 
-#include "cmsis_os.h"
+#include "GUITask.h"
+#include "cmsis_os2.h"
+#include "app_touchgfx.h"
 
 #include <touchgfx/hal/BoardConfiguration.hpp>
 
-
-osThreadId_t TouchGFXTaskHandle;
-const osThreadAttr_t TouchGFXTask_attributes = {
-  .name = "TouchGFXTask",
-  .priority = (osPriority_t)osPriorityNormal,
-  .stack_size = 4096 * 4
-};
-
-void TouchGFX_Task(void* argument);
 
 int main(void)
 {
@@ -22,26 +15,15 @@ int main(void)
 
 	osKernelInitialize();
 
-	TouchGFXTaskHandle = osThreadNew(TouchGFX_Task, NULL, &TouchGFXTask_attributes);
+	new GUITask();
 
+	/* STARTS FREERTOS SCHEDULER */
 	osKernelStart();
 
 	while (1)
 	{
 	}
 }
-
-
-/* Remnants of original main file; forward decleration seems to work */
-// __weak void TouchGFX_Task(void* argument)
-// {
-//     /* USER CODE BEGIN 5 */
-//     for (;;)
-//     {
-//         osDelay(1);
-//     }
-//     /* USER CODE END 5 */
-// }
 
 
 /**

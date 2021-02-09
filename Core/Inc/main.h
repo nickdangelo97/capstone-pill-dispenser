@@ -6,7 +6,6 @@ extern "C" {
 #endif
 
 #include "stm32f7xx_hal.h"
-#include "app_touchgfx.h"
 
 
 void Error_Handler(void);
