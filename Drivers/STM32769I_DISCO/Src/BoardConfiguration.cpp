@@ -61,6 +61,7 @@ QSPI_HandleTypeDef hqspi;
 
 SDRAM_HandleTypeDef hsdram1;
 
+RTC_HandleTypeDef hrtc;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -75,6 +76,7 @@ static void MX_LTDC_Init(void);
 static void MX_FMC_Init(void);
 static void MX_QUADSPI_Init(void);
 static void MX_DMA2D_Init(void);
+static void MX_RTC_Init(void);
 
 /* USER CODE BEGIN PFP */
 static void BSP_SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef* hsdram, FMC_SDRAM_CommandTypeDef* Command);
@@ -124,6 +126,7 @@ void hw_init()
   MX_QUADSPI_Init();
   MX_DMA2D_Init();
   MX_I2C4_Init();
+  MX_RTC_Init();
 }
 
 /**
@@ -136,18 +139,20 @@ void hw_init()
     */
 void SystemClock_Config(void)
 {
-    RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
-    RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
-    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = { 0 };
+    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
     /** Configure the main internal regulator output voltage
-    */
+     */
     __HAL_RCC_PWR_CLK_ENABLE();
     __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-    /** Initializes the CPU, AHB and APB busses clocks
-    */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    /** Initializes the RCC Oscillators according to the specified parameters
+     * in the RCC_OscInitTypeDef structure.
+     */
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+    RCC_OscInitStruct.LSIState = RCC_LSI_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
     RCC_OscInitStruct.PLL.PLLM = 25;
@@ -159,15 +164,15 @@ void SystemClock_Config(void)
         Error_Handler();
     }
     /** Activate the Over-Drive mode
-    */
+     */
     if (HAL_PWREx_EnableOverDrive() != HAL_OK)
     {
         Error_Handler();
     }
-    /** Initializes the CPU, AHB and APB busses clocks
-    */
-    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
-        | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+    /** Initializes the CPU, AHB and APB buses clocks
+     */
+    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                                |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -177,13 +182,15 @@ void SystemClock_Config(void)
     {
         Error_Handler();
     }
-    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC | RCC_PERIPHCLK_I2C4;
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_RTC
+                                |RCC_PERIPHCLK_I2C4;
     PeriphClkInitStruct.PLLSAI.PLLSAIN = 384;
     PeriphClkInitStruct.PLLSAI.PLLSAIR = 7;
     PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
     PeriphClkInitStruct.PLLSAI.PLLSAIP = RCC_PLLSAIP_DIV2;
     PeriphClkInitStruct.PLLSAIDivQ = 1;
     PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_2;
+    PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
     PeriphClkInitStruct.I2c4ClockSelection = RCC_I2C4CLKSOURCE_PCLK1;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
@@ -591,6 +598,58 @@ static void MX_QUADSPI_Init(void)
     }
 
     /* USER CODE END QUADSPI_Init 2 */
+
+}
+
+/**
+  * @brief RTC Initialization Function
+  * @param None
+  * @retval None
+  */
+void MX_RTC_Init(void)
+{
+  RTC_TimeTypeDef sTime = {0};
+  RTC_DateTypeDef sDate = {0};
+
+  /** Initialize RTC Only
+  */
+  hrtc.Instance = RTC;
+  hrtc.Init.HourFormat = RTC_HOURFORMAT_12;
+  hrtc.Init.AsynchPrediv = 127;
+  hrtc.Init.SynchPrediv = 255;
+  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+  if (HAL_RTC_Init(&hrtc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* USER CODE BEGIN Check_RTC_BKUP */
+
+  /* USER CODE END Check_RTC_BKUP */
+
+  /** Initialize RTC and set the Time and Date
+  */
+  sTime.Hours = 10;
+  sTime.Minutes = 0;
+  sTime.Seconds = 0;
+  sTime.TimeFormat = RTC_HOURFORMAT12_AM;
+  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+  sDate.Month = RTC_MONTH_JANUARY;
+  sDate.Date = 1;
+  sDate.Year = 0;
+
+  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
+  {
+    Error_Handler();
+  }
 
 }
 
