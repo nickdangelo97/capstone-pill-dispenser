@@ -10,3 +10,15 @@ TaskHandle_t Util::create_task(osThreadFunc_t function, void *argument, const ch
 
     return (TaskHandle_t)osThreadNew(function, argument, &attributes);
 }
+
+
+int Util::seconds_since_midnight(int h, int m, int s, bool am)
+{
+    if(h == 12 && am)
+        h = 0;
+    
+    if(h < 12 && !am)
+        h += 12;
+
+    return h*60*60 + m*60 + s;
+}
