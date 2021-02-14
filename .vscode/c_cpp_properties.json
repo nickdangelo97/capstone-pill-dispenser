@@ -30,8 +30,7 @@
                 "STM32F769xx"
             ],
             "windowsSdkVersion": "10.0.18362.0",
-            // "compilerPath": "C:\\TouchGFX\\4.16.0\\env\\MinGW\\msys\\1.0\\gnu-arm-gcc\\bin\\arm-none-eabi-c++",
-            "compilerPath": "C:\\TouchGFX\\env\\MinGW\\msys\\1.0\\gnu-arm-gcc\\bin\\arm-none-eabi-c++", 
+            "compilerPath": "C:\\TouchGFX\\4.16.0\\env\\MinGW\\msys\\1.0\\gnu-arm-gcc\\bin\\arm-none-eabi-c++",
             "cStandard": "c11",
             "cppStandard": "c++11",
             "intelliSenseMode": "${default}"
