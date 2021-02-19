@@ -1,12 +1,10 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include "cmsis_os2.h"
 #include "FreeRTOS.h"
 #include "task.h"
 
-
-typedef void (*osThreadFunc_t) (void *argument);
-enum osPriority_t : int;
 
 class Util
 {
