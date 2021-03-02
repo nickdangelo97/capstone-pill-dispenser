@@ -55,6 +55,8 @@ void touchgfx_init();
 
 
 void MX_I2C4_Init(void);
+uint8_t QSPI_WriteEnable(QSPI_HandleTypeDef* hqspi);
+
 
 #ifdef __cplusplus
 }

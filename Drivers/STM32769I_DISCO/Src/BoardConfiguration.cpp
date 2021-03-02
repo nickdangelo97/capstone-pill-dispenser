@@ -86,7 +86,6 @@ static uint8_t QSPI_EnterMemory_QPI(QSPI_HandleTypeDef* hqspi);
 static uint8_t QSPI_EnterFourBytesAddress(QSPI_HandleTypeDef* hqspi);
 static uint8_t QSPI_DummyCyclesCfg(QSPI_HandleTypeDef* hqspi);
 static uint8_t QSPI_OutDrvStrengthCfg(QSPI_HandleTypeDef* hqspi);
-static uint8_t QSPI_WriteEnable(QSPI_HandleTypeDef* hqspi);
 static uint8_t QSPI_AutoPollingMemReady(QSPI_HandleTypeDef* hqspi, uint32_t Timeout);
 static uint8_t BSP_QSPI_EnableMemoryMappedMode(QSPI_HandleTypeDef* hqspi);
 /* USER CODE END PFP */
@@ -1274,7 +1273,7 @@ static uint8_t QSPI_OutDrvStrengthCfg(QSPI_HandleTypeDef* hqspi)
   * @param  hqspi: QSPI handle
   * @retval None
   */
-static uint8_t QSPI_WriteEnable(QSPI_HandleTypeDef* hqspi)
+uint8_t QSPI_WriteEnable(QSPI_HandleTypeDef* hqspi)
 {
     QSPI_CommandTypeDef     s_command;
     QSPI_AutoPollingTypeDef s_config;
