@@ -41,6 +41,37 @@ extern "C" {
 #define FRAMERATE_Pin GPIO_PIN_1
 #define FRAMERATE_GPIO_Port GPIOJ
 
+
+#define STEPPER_PAIR_1_PIN_1_Pin GPIO_PIN_6
+#define STEPPER_PAIR_1_PIN_1_GPIO_Port GPIOF
+#define STEPPER_PAIR_1_PIN_2_Pin GPIO_PIN_0
+#define STEPPER_PAIR_1_PIN_2_GPIO_Port GPIOJ
+#define STEPPER_PAIR_1_PIN_3_Pin GPIO_PIN_8
+#define STEPPER_PAIR_1_PIN_3_GPIO_Port GPIOC
+#define STEPPER_PAIR_1_PIN_4_Pin GPIO_PIN_7
+#define STEPPER_PAIR_1_PIN_4_GPIO_Port GPIOF
+
+
+#define STEPPER_PAIR_2_PIN_1_Pin GPIO_PIN_3
+#define STEPPER_PAIR_2_PIN_1_GPIO_Port GPIOJ
+#define STEPPER_PAIR_2_PIN_2_Pin GPIO_PIN_4
+#define STEPPER_PAIR_2_PIN_2_GPIO_Port GPIOJ
+#define STEPPER_PAIR_2_PIN_3_Pin GPIO_PIN_6
+#define STEPPER_PAIR_2_PIN_3_GPIO_Port GPIOH
+#define STEPPER_PAIR_2_PIN_4_Pin GPIO_PIN_11
+#define STEPPER_PAIR_2_PIN_4_GPIO_Port GPIOA
+
+
+#define CUTTER_1_Pin GPIO_PIN_15
+#define CUTTER_1_GPIO_Port GPIOB
+#define CUTTER_2_Pin GPIO_PIN_14
+#define CUTTER_2_GPIO_Port GPIOB
+#define CUTTER_3_Pin GPIO_PIN_12
+#define CUTTER_3_GPIO_Port GPIOA
+#define CUTTER_4_Pin GPIO_PIN_9
+#define CUTTER_4_GPIO_Port GPIOB
+
+
 /**
  * Function to perform generic hardware initialization of the board. This function prototype is
  * only provided as a convention.
