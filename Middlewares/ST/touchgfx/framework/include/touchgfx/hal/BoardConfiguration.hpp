@@ -62,14 +62,14 @@ extern "C" {
 #define STEPPER_PAIR_2_PIN_4_GPIO_Port GPIOA
 
 
-#define CUTTER_1_Pin GPIO_PIN_15
-#define CUTTER_1_GPIO_Port GPIOB
-#define CUTTER_2_Pin GPIO_PIN_14
-#define CUTTER_2_GPIO_Port GPIOB
-#define CUTTER_3_Pin GPIO_PIN_12
-#define CUTTER_3_GPIO_Port GPIOA
-#define CUTTER_4_Pin GPIO_PIN_9
-#define CUTTER_4_GPIO_Port GPIOB
+#define CUTTER_1_Pin GPIO_PIN_6
+#define CUTTER_1_GPIO_Port GPIOA
+#define CUTTER_2_Pin GPIO_PIN_4
+#define CUTTER_2_GPIO_Port GPIOA
+#define CUTTER_3_Pin GPIO_PIN_2
+#define CUTTER_3_GPIO_Port GPIOC
+#define CUTTER_4_Pin GPIO_PIN_10
+#define CUTTER_4_GPIO_Port GPIOF
 
 
 /**
