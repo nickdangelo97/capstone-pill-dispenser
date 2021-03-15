@@ -72,6 +72,12 @@ extern "C" {
 #define CUTTER_4_GPIO_Port GPIOF
 
 
+#define SENSOR_1_Pin GPIO_PIN_14
+#define SENSOR_1_GPIO_Port GPIOB
+#define SENSOR_2_Pin GPIO_PIN_12
+#define SENSOR_2_GPIO_Port GPIOA
+
+
 /**
  * Function to perform generic hardware initialization of the board. This function prototype is
  * only provided as a convention.
