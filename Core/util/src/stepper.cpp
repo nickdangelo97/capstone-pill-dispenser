@@ -164,7 +164,7 @@ Stepper::Stepper(int number_of_steps, std::pair<GPIO_TypeDef*, int> motor_pin_1,
 void Stepper::setSpeed(long whatSpeed)
 {
     /* Downscale chosen by trial and error; can be changed as needed */
-    this->step_delay = ((60L * 1000L * 1000L) / this->number_of_steps / whatSpeed) / 30;
+    this->step_delay = ((60L * 1000L * 1000L) / this->number_of_steps / whatSpeed)/960;
 }
 
 
